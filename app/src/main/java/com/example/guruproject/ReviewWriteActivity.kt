@@ -4,7 +4,6 @@ import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_review_detail.*
 import kotlinx.android.synthetic.main.activity_review_write.*
 
 class ReviewWriteActivity : AppCompatActivity() {
@@ -14,7 +13,7 @@ class ReviewWriteActivity : AppCompatActivity() {
         setContentView(R.layout.activity_review_write)
 
 
-
+        //글 쓰기 완료 후 기기내 DB에 저장버튼
         btn_submit.setOnClickListener(){
             val addIntent = intent ?: return@setOnClickListener
             if(editBookTitle.text.isEmpty() || editDate.text.isEmpty() || editPhoto.text.isEmpty() || editContent.text.isEmpty()){
@@ -22,10 +21,10 @@ class ReviewWriteActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            addIntent.putExtra(MainActivity.BOOK_PHOTO, editPhoto.text.toString())
-            addIntent.putExtra(MainActivity.BOOK_TITLE, editBookTitle.text.toString())
-            addIntent.putExtra(MainActivity.BOOK_DATE, editDate.text.toString())
-            addIntent.putExtra(MainActivity.BOOK_CONTENT, editContent.text.toString())
+            addIntent.putExtra(MyBookListActivity.BOOK_PHOTO, editPhoto.text.toString())
+            addIntent.putExtra(MyBookListActivity.BOOK_TITLE, editBookTitle.text.toString())
+            addIntent.putExtra(MyBookListActivity.BOOK_DATE, editDate.text.toString())
+            addIntent.putExtra(MyBookListActivity.BOOK_CONTENT, editContent.text.toString())
             setResult(Activity.RESULT_OK, addIntent)
             finish()
 

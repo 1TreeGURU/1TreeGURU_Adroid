@@ -5,10 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_review_detail.*
-import kotlinx.android.synthetic.main.activity_review_write.*
 
 class ReviewDetailActivity : AppCompatActivity() {
 
@@ -39,8 +37,8 @@ class ReviewDetailActivity : AppCompatActivity() {
         btn_delete.setOnClickListener(){
             val deleteIntent = intent ?: return@setOnClickListener
 
-            deleteIntent.putExtra(MainActivity.DELETE_BOOK_TITLE, tv_BookTitle.text.toString())
-            deleteIntent.putExtra(MainActivity.DELETE_BOOK_STATE, true)
+            deleteIntent.putExtra(MyBookListActivity.DELETE_BOOK_TITLE, tv_BookTitle.text.toString())
+            deleteIntent.putExtra(MyBookListActivity.DELETE_BOOK_STATE, true)
             setResult(Activity.RESULT_OK, deleteIntent)
             finish()
 
@@ -62,6 +60,7 @@ class ReviewDetailActivity : AppCompatActivity() {
 
     }
 
+    //커뮤니티(파이어베이스 서버)에 작성글 공유하는 함수
     private fun commUpload(){
         progressBar.visibility = View.VISIBLE
         var firestore = FirebaseFirestore.getInstance()

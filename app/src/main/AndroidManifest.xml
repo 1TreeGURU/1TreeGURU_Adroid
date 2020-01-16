@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ReviewDetailActivity"></activity>
         <activity android:name=".ReviewWriteActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MyBookListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

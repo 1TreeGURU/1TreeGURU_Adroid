@@ -7,31 +7,20 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.Button
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.guruproject.MainActivity.Companion.BOOK_CONTENT
-import com.example.guruproject.MainActivity.Companion.BOOK_DATE
-import com.example.guruproject.MainActivity.Companion.BOOK_PHOTO
-import com.example.guruproject.MainActivity.Companion.BOOK_TITLE
-import com.example.guruproject.MainActivity.Companion.REQUEST_CODE_MENU
-import kotlinx.android.synthetic.main.activity_main.*
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import kotlinx.android.synthetic.main.activity_my_book_list.*
 
 
-
-
-class MainActivity : AppCompatActivity() {
+class MyBookListActivity : AppCompatActivity() {
     companion object {
+        //ReviewWriteActivity와 연결
         val REQUEST_CODE_MENU = 2230
         val BOOK_PHOTO = "photo"
         val BOOK_TITLE = "title"
         val BOOK_DATE = "date"
         val BOOK_CONTENT = "content"
+        //ReviewDetailActivity와 연결
         val DELETE_BOOK_STATE = "false"
         val DELETE_REQUEST_CODE = 1680
         val DELETE_BOOK_TITLE = "delete"
@@ -46,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_my_book_list)
 
         //리사이클러뷰 내 리스트 아이템 클릭 시 해당 글 자세히 보기
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
