@@ -32,9 +32,6 @@ public class OneDayDecorator implements DayViewDecorator {
         view.addSpan(new ForegroundColorSpan(Color.GREEN));
     }
 
-    /**
-     * We're changing the internals, so make sure to call {@linkplain MaterialCalendarView#invalidateDecorators()}
-     */
     public void setDate(Date date) {
         this.date = CalendarDay.from(date);
     }

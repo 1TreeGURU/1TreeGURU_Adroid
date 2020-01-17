@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".LibraryMain">
 
     <com.prolificinteractive.materialcalendarview.MaterialCalendarView
         android:id="@+id/calendarView"
@@ -13,7 +13,47 @@
         app:mcv_selectionColor="#00F"
         app:mcv_showOtherDates="all"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="327dp" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="225dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="내 서재"
+        tools:layout_editor_absoluteX="12dp"
+        tools:layout_editor_absoluteY="14dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="목표 달성도"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="99dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="376dp"
+        android:layout_height="24dp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="130dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="캘린더"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="189dp" />
+
+    <Button
+        android:id="@+id/btn_lib_setting"
+        android:layout_width="90dp"
+        android:layout_height="33dp"
+        android:text="setting"
+        tools:layout_editor_absoluteX="297dp"
+        tools:layout_editor_absoluteY="25dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
