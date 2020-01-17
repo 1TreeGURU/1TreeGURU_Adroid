@@ -6,8 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.activity_review_detail.view.*
 import kotlinx.android.synthetic.main.book_list_item.view.*
+import kotlinx.android.synthetic.main.search_list_item.view.*
 
 class BookItemAdapter (val context: Context, val itemCheck: (BookItem) -> Unit)
     : RecyclerView.Adapter<BookItemAdapter.ViewHolder>() {
@@ -59,6 +62,11 @@ class BookItemAdapter (val context: Context, val itemCheck: (BookItem) -> Unit)
             else {
                 itemView.img_book?.setImageResource(resourceId)
             }
+            Glide.with(itemView)    //url를 통해 이미지를 이미지뷰로 출력
+                .load(item.photo)
+                .apply(RequestOptions().centerCrop())
+                .into(itemView.img_book)
+
             itemView.tv_bookTitle.text = item.title
             itemView.tv_bookDate.text = item.date
             itemView.setOnClickListener() { itemCheck(item) }

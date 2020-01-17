@@ -1,10 +1,12 @@
 package com.example.guruproject
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.squareup.okhttp.HttpUrl
 import com.squareup.okhttp.OkHttpClient
 import okhttp3.*
@@ -14,6 +16,11 @@ import javax.xml.parsers.DocumentBuilderFactory
 import kotlinx.android.synthetic.main.activity_my_book_list.*
 import kotlinx.android.synthetic.main.activity_review_detail.*
 import kotlinx.android.synthetic.main.activity_search_book_api.*
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import com.example.guruproject.MyBookListActivity.Companion.DELETE_REQUEST_CODE
+import kotlinx.android.synthetic.main.activity_review_write.*
 
 
 class SearchBookApi : AppCompatActivity() {
@@ -26,26 +33,41 @@ class SearchBookApi : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_book_api)
 
-        btn_searchBookApi.setOnClickListener(){
-            if(edtSearchBook.text.isEmpty()) {
+        btn_searchBookApi.setOnClickListener() {
+            if (edtSearchBook.text.isEmpty()) {
                 return@setOnClickListener
             }
             val searchMyBookTitle = edtSearchBook.text.toString()
 
+            val mViewItems = ArrayList<SearchBookItem>()
+            adapter.setItems(mViewItems) //리사이클러뷰 초기화
+
             getSearchBookListFromApi(searchMyBookTitle)
-
         }
 
 
 
 
-        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        adapter = SearchItemAdapter(this){
-            Toast.makeText(this, "${it.title}, ${it.author}이 선택되었습니다.",Toast.LENGTH_LONG).show()
-        }
+            recyclerView2.layoutManager =
+                LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+            adapter = SearchItemAdapter(this) {
+                //해당 책 아이템 선택 시
+                Toast.makeText(this, "${it.title}, ${it.author}이 선택되었습니다.", Toast.LENGTH_LONG)
+                    .show()
 
-        adapter.setItems(searchBookList)
-        recyclerView.adapter = adapter
+                //ReviewWriteActivity로 선택된 아이템 정보 넘기기
+                val writeIntent = intent
+
+                writeIntent.putExtra(ReviewWriteActivity.SEARCH_PHOTO, it.photo)
+                writeIntent.putExtra(ReviewWriteActivity.SEARCH_TITLE, it.title)
+                writeIntent.putExtra(ReviewWriteActivity.SEARCH_AUTHOR, it.author)
+                setResult(Activity.RESULT_OK, writeIntent)
+                finish()
+            }
+
+            adapter.setItems(searchBookList)
+            recyclerView2.adapter = adapter
+
     }
 
     private fun getSearchBookListFromApi(searchMyBookTitle: String) {
@@ -68,20 +90,20 @@ class SearchBookApi : AppCompatActivity() {
 
                     val searchNum = getValueFromKey(element, "NUMBER")
                     val bookTitle = getValueFromKey(element, "TITLE")
+                    val newTitle = bookTitle.replace("<b>","") //제목에 <b>태그 따라붙는 것 삭제
+                    val finalTitle = newTitle.replace("</b>", "")
                     val boolAuthor = getValueFromKey(element, "AUTHOR")
+                    val newAuthor = boolAuthor.replace("<b>", "")//저자에 <b>태그 따라붙는 것 삭제
+                    val finalAuthor = newAuthor.replace("</b>", "")
                     val publisher = getValueFromKey(element, "PUBLISHER")
                     val pubYear = getValueFromKey(element, "PUBYEAR")
-                    val cover_YN = getValueFromKey(element, "COVER_YN")
                     var cover_Url = ""
-                    if(getValueFromKey(element, "Cover_YN")=="Y"){
+                    if(getValueFromKey(element, "COVER_YN")=="Y"){
                         cover_Url = getValueFromKey(element, "COVER_URL")
-                    }else if(getValueFromKey(element, "Cover_YN")=="N"){
+                    }else if(getValueFromKey(element, "COVER_YN")=="N"){
                         cover_Url = "https://i.pinimg.com/originals/35/93/89/3593898fdeb3db9221256bd8771b1ec5.png"
                     }
-                    adapter.addItem(SearchBookItem(cover_Url,bookTitle,boolAuthor,publisher,pubYear))
-
-
-
+                    adapter.addItem(SearchBookItem(cover_Url,finalTitle,finalAuthor,publisher,pubYear))
 
                 }
                 runOnUiThread {
@@ -93,9 +115,8 @@ class SearchBookApi : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call, e: IOException) {
-                val body = e.message
                 runOnUiThread {
-                    Toast.makeText(this@SearchBookApi, "로딩 실패", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@SearchBookApi, "로딩 실패" + e.message, Toast.LENGTH_LONG).show()
                     progressBar2.visibility = View.GONE
                 }
             }

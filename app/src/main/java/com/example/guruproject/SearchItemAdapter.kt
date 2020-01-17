@@ -5,6 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import kotlinx.android.synthetic.main.book_list_item.view.*
 import kotlinx.android.synthetic.main.search_list_item.view.*
 
 
@@ -53,12 +56,17 @@ class SearchItemAdapter (val context: Context, val itemCheck: (SearchBookItem) -
                 context.packageName
             )
             if (resourceId in 0..1) {
-                itemView.img_book?.setImageResource(R.mipmap.ic_launcher)
+                itemView.img_searchbook?.setImageResource(R.mipmap.ic_launcher)
             }
             else {
-                itemView.img_book?.setImageResource(resourceId)
+                itemView.img_searchbook?.setImageResource(resourceId)
             }
-            itemView.tv_bookTitle.text = item.title
+            Glide.with(itemView)        //url를 통해 이미지를 이미지뷰로 출력
+                .load(item.photo)
+                .apply(RequestOptions().centerCrop())
+                .into(itemView.img_searchbook)
+
+            itemView.tv_searchBookTitle.text = item.title
             itemView.tv_author.text = item.author
             itemView.tv_publisher.text = item.publisher
             itemView.tv_pubyear.text = item.pubYear
