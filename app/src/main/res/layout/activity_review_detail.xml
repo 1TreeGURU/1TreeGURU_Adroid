@@ -46,6 +46,26 @@
                     android:textSize="17dp" />
 
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="작가 : "
+                    android:textColor="#2646E0"
+                    android:textSize="17dp" />
+
+                <TextView
+                    android:id="@+id/tv_Author"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="17dp" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

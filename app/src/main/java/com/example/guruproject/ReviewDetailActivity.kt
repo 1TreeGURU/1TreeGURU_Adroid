@@ -12,6 +12,7 @@ class ReviewDetailActivity : AppCompatActivity() {
 
     companion object{
         val REVIEW_TITLE = "title"
+        val REVIEW_AUTHOR = "author"
         val REVIEW_PHOTO = "photo"
         val REVIEW_DATE = "date"
         val REVIEW_CONTENT = "content"
@@ -28,6 +29,7 @@ class ReviewDetailActivity : AppCompatActivity() {
         //intent 받아와서 글로 보이기
         val receivedIntent = intent ?:return
         tv_BookTitle.text = receivedIntent.getStringExtra(REVIEW_TITLE)
+        tv_Author.text = receivedIntent.getStringExtra(REVIEW_AUTHOR)
         tv_Photo.text = receivedIntent.getStringExtra(REVIEW_PHOTO)
         tv_Date.text = receivedIntent.getStringExtra(REVIEW_DATE)
         tv_Content.text = receivedIntent.getStringExtra(REVIEW_CONTENT)
@@ -53,7 +55,7 @@ class ReviewDetailActivity : AppCompatActivity() {
 
         //공유하기 버튼 클릭 시 커뮤니티(파이어베이스 서버)에 나의 책 리뷰 업로드
         btn_upload.setOnClickListener(){
-            uploadBook = BookItem(tv_Photo.text.toString(), tv_BookTitle.text.toString(), tv_Date.text.toString(), tv_Content.text.toString())
+            uploadBook = BookItem(tv_Photo.text.toString(), tv_BookTitle.text.toString(), tv_Author.text.toString(), tv_Date.text.toString(), tv_Content.text.toString())
             commUpload()
 
         }

@@ -18,6 +18,7 @@ class MyBookListActivity : AppCompatActivity() {
         val REQUEST_CODE_MENU = 2230
         val BOOK_PHOTO = "photo"
         val BOOK_TITLE = "title"
+        val BOOK_AUTHOR = "author"
         val BOOK_DATE = "date"
         val BOOK_CONTENT = "content"
         //ReviewDetailActivity와 연결
@@ -44,6 +45,7 @@ class MyBookListActivity : AppCompatActivity() {
 
             reviewIntent.putExtra(ReviewDetailActivity.REVIEW_PHOTO, it.photo)
             reviewIntent.putExtra(ReviewDetailActivity.REVIEW_TITLE, it.title)
+            reviewIntent.putExtra(ReviewDetailActivity.REVIEW_AUTHOR, it.author)
             reviewIntent.putExtra(ReviewDetailActivity.REVIEW_DATE, it.date)
             reviewIntent.putExtra(ReviewDetailActivity.REVIEW_CONTENT, it.content)
             startActivityForResult(reviewIntent, DELETE_REQUEST_CODE)
@@ -87,7 +89,7 @@ class MyBookListActivity : AppCompatActivity() {
     //DB테이블 생성 함수
     fun openOrCreateUserTable(){
         if(database != null){
-            database.execSQL("create table if not exists MybookTable (_id integer PRIMARY KEY autoincrement, title text, photo text, date text, content text)")
+            database.execSQL("create table if not exists MybookTable (_id integer PRIMARY KEY autoincrement, title text, photo text, author text, date text, content text)")
             //Toast.makeText(this, "테이블 생성 완료", Toast.LENGTH_LONG).show()
         }
     }
@@ -97,7 +99,7 @@ class MyBookListActivity : AppCompatActivity() {
         //사용자 책DB 조회
         lateinit var cursor: Cursor
         if(database != null) {
-            cursor = database.rawQuery("select title, photo, date, content from MybookTable", null)
+            cursor = database.rawQuery("select title, photo, author, date, content from MybookTable", null)
             Toast.makeText(this, "나의 책 리뷰  : " + cursor.getCount() + "개", Toast.LENGTH_LONG).show()
 
 
@@ -109,12 +111,13 @@ class MyBookListActivity : AppCompatActivity() {
 
                     var title = cursor.getString(0)
                     var photo =  cursor.getString(1)
-                    var date = cursor.getString(2)
-                    var content = cursor.getString(3)
+                    var author = cursor.getString(2)
+                    var date = cursor.getString(3)
+                    var content = cursor.getString(4)
                     cursor.moveToNext()
 
                     //조회된 데이터 리사이클러뷰로 출력
-                    adapter.addItem(BookItem(photo, title, date, content))
+                    adapter.addItem(BookItem(photo, title, author, date, content))
                     adapter.notifyDataSetChanged()
 
 
@@ -137,17 +140,18 @@ class MyBookListActivity : AppCompatActivity() {
             REQUEST_CODE_MENU -> {
                 val photo = data.getStringExtra(BOOK_PHOTO)
                 val title = data.getStringExtra(BOOK_TITLE)
+                val author = data.getStringExtra(BOOK_AUTHOR)
                 val date = data.getStringExtra(BOOK_DATE)
                 val content = data.getStringExtra(BOOK_CONTENT)
                 //작성한 데이터 DB에 저장하기
                 if(database != null){
-                    var sql: String = ("insert into MybookTable (title, photo, date, content) values (?, ?, ?, ?)")
-                    var array = arrayOf(title, photo, date, content)
+                    var sql: String = ("insert into MybookTable (title, photo, author, date, content) values (?, ?, ?, ?, ?)")
+                    var array = arrayOf(title, photo, author, date, content)
                     database.execSQL(sql, array)
                     Toast.makeText(this, "데이터 저장 완료", Toast.LENGTH_LONG).show()
                 }
                 //리사이클러뷰로 출력
-                adapter.addItem(BookItem(photo, title, date, content))
+                adapter.addItem(BookItem(photo, title, author, date, content))
                 adapter.notifyDataSetChanged()
             }
             //글 삭제 activity에서 intent받을 때

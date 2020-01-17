@@ -4,25 +4,24 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_review_detail.view.*
-import kotlinx.android.synthetic.main.book_list_item.view.*
+import kotlinx.android.synthetic.main.search_list_item.view.*
 
-class BookItemAdapter (val context: Context, val itemCheck: (BookItem) -> Unit)
-    : RecyclerView.Adapter<BookItemAdapter.ViewHolder>() {
-    private var items = ArrayList<BookItem>()
+
+class SearchItemAdapter (val context: Context, val itemCheck: (SearchBookItem) -> Unit)
+    : RecyclerView.Adapter<SearchItemAdapter.ViewHolder>() {
+    private var items = ArrayList<SearchBookItem>()
     private lateinit var itemClickListener: ItemClickListener //클릭리스너 선언
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(viewGroup.context)
-        val itemView: View = inflater.inflate(R.layout.book_list_item, viewGroup, false)
+        val itemView: View = inflater.inflate(R.layout.search_list_item, viewGroup, false)
 
         return ViewHolder(itemView, itemCheck)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        val item: BookItem = items[position]
+        val item: SearchBookItem = items[position]
 
         viewHolder.setItem(item)
     }
@@ -31,11 +30,11 @@ class BookItemAdapter (val context: Context, val itemCheck: (BookItem) -> Unit)
         return items.count()
     }
 
-    fun setItems(items: ArrayList<BookItem>) {
+    fun setItems(items: ArrayList<SearchBookItem>) {
         this.items = items
     }
 
-    fun addItem(item: BookItem){
+    fun addItem(item: SearchBookItem){
         items.add(item)
     }
 
@@ -45,9 +44,9 @@ class BookItemAdapter (val context: Context, val itemCheck: (BookItem) -> Unit)
     }
 
 
-    inner class ViewHolder(itemView: View, itemCheck: (BookItem) -> Unit)
+    inner class ViewHolder(itemView: View, itemCheck: (SearchBookItem) -> Unit)
         : RecyclerView.ViewHolder(itemView) {
-        fun setItem(item: BookItem) {
+        fun setItem(item: SearchBookItem) {
             val resourceId = context.resources.getIdentifier(
                 item.photo,
                 "drawable",
@@ -60,7 +59,10 @@ class BookItemAdapter (val context: Context, val itemCheck: (BookItem) -> Unit)
                 itemView.img_book?.setImageResource(resourceId)
             }
             itemView.tv_bookTitle.text = item.title
-            itemView.tv_bookDate.text = item.date
+            itemView.tv_author.text = item.author
+            itemView.tv_publisher.text = item.publisher
+            itemView.tv_pubyear.text = item.pubYear
+
             itemView.setOnClickListener() { itemCheck(item) }
         }
     }
