@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="category_array">
+        <item>카테고리 선택</item>
+        <item>기쁨을 나누고 싶어</item>
+        <item>울적함을 달래자</item>
+        <item>화를 분출할 곳이 필요해</item>
+        <item>등골이 오싹한 뭐 없을까</item>
+        <item>커피 한 잔의 여유와 함께</item>
+        <item>힐링이 필요해</item>
+        <item>더 멋진 나로 거듭나자</item>
+    </string-array>
+</resources>

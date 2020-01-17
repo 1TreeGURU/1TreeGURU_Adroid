@@ -4,11 +4,14 @@ import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_review_detail.*
 
 class ReviewDetailActivity : AppCompatActivity() {
+
+    private lateinit var category: String
 
     companion object{
         val REVIEW_TITLE = "title"
@@ -23,6 +26,39 @@ class ReviewDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_review_detail)
+
+        //카테고리 스피너 설정
+        spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent:AdapterView<*>, view:View,
+                                        position:Int, id:Long) {
+                when(position) {
+                    0 -> {
+                        category = "none"
+                    }
+                    1 -> { category = "기쁨을 나누고 싶어"
+                    }
+                    2 -> { category = "울적함을 달래자"
+                    }
+                    3 -> { category = "화를 분출할 곳이 필요해"
+                    }
+                    4 -> { category = "등골이 오싹한 뭐 없을까"
+                    }
+                    5 -> { category = "커피 한 잔의 여유와 함께"
+                    }
+                    6 -> { category = "힐링이 필요해"
+                    }
+                    7 -> { category = "더 멋진 나로 거듭나자"
+
+                    }
+                }
+
+
+            }
+
+            override fun onNothingSelected(parent:AdapterView<*>) {
+                Toast.makeText(applicationContext, "카테고리를 선택해주세요", Toast.LENGTH_LONG).show()
+            }
+        }
 
 
 
@@ -55,8 +91,19 @@ class ReviewDetailActivity : AppCompatActivity() {
 
         //공유하기 버튼 클릭 시 커뮤니티(파이어베이스 서버)에 나의 책 리뷰 업로드
         btn_upload.setOnClickListener(){
-            uploadBook = BookItem(tv_Photo.text.toString(), tv_BookTitle.text.toString(), tv_Author.text.toString(), tv_Date.text.toString(), tv_Content.text.toString())
-            commUpload()
+            if(category=="none"){
+                Toast.makeText(this, "카테고리를 선택해주세요", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }else {
+                uploadBook = BookItem(
+                    tv_Photo.text.toString(),
+                    tv_BookTitle.text.toString(),
+                    tv_Author.text.toString(),
+                    tv_Date.text.toString(),
+                    tv_Content.text.toString()
+                )
+                commUpload()
+            }
 
         }
 
@@ -66,7 +113,7 @@ class ReviewDetailActivity : AppCompatActivity() {
     private fun commUpload(){
         progressBar.visibility = View.VISIBLE
         var firestore = FirebaseFirestore.getInstance()
-        firestore?.collection("Community")?.document(uploadBook.title!!)?.set(uploadBook)
+        firestore?.collection(category)?.document(uploadBook.title!!)?.set(uploadBook)
             ?.addOnCompleteListener{task->
                 progressBar.visibility = View.GONE
                 if(task.isSuccessful){
