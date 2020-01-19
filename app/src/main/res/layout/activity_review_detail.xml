@@ -128,11 +128,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="500dp"
                 android:layout_marginTop="10dp"
-                android:padding="10dp"
                 android:background="@drawable/edit_text_box"
                 android:gravity="top"
                 android:inputType="text|textMultiLine"
-                android:maxLength="300" />
+                android:maxLength="300"
+                android:padding="10dp" />
 
             <ProgressBar
                 android:id="@+id/progressBar"
