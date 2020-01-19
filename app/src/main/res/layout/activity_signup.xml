@@ -10,12 +10,12 @@
 
     <View
         android:id="@+id/View1"
-        android:layout_width="3dp"
+        android:layout_width="5dp"
         android:layout_height="28dp"
         android:layout_marginStart="42dp"
         android:layout_marginTop="65dp"
         android:layout_marginEnd="10dp"
-        android:background="#757E88"
+        android:background="@color/nomalColor"
         app:layout_constraintEnd_toStartOf="@+id/textView5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,13 +26,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="64dp"
-        android:fontFamily="@font/nanumsquareptfregular"
+        android:fontFamily="@font/nanumsquareotfbold"
         android:lineSpacingExtra="3.5sp"
+        android:text="간편 회원가입"
         android:textColor="#707070"
         android:textSize="25sp"
         app:layout_constraintStart_toEndOf="@+id/View1"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="간편 회원가입" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/edt_login_email"

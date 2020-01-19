@@ -8,17 +8,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <EditText
             android:id="@+id/edtSearchBook"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:hint="책 제목 또는 저자를 입력하세요"/>
+            android:fontFamily="@font/nanumsquareptfregular"
+            android:hint="책 제목 또는 저자를 입력하세요" />
+
         <Button
             android:id="@+id/btn_searchBookApi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="검색"/>
+            android:background="@drawable/bg_btn_round"
+            android:fontFamily="@font/nanumsquareotfbold"
+            android:text="검색"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
     </LinearLayout>
 
     <ProgressBar

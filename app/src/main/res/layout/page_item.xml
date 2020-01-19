@@ -12,7 +12,7 @@
         android:id="@+id/cardView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="15dp"
         app:cardElevation="5dp">
 
         <LinearLayout
@@ -39,9 +39,11 @@
                         android:id="@+id/txt_item_num"
                         android:layout_width="71dp"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nanumsquareotfextrabold"
                         android:gravity="center"
                         android:paddingTop="10dp"
                         android:text="25"
+                        android:textAlignment="center"
                         android:textSize="21sp"
                         android:textStyle="bold" />
 
@@ -49,9 +51,11 @@
                         android:id="@+id/txt_item_date"
                         android:layout_width="71dp"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nanumsquareotfbold"
                         android:gravity="center"
                         android:paddingTop="5dp"
                         android:text="2020.01"
+                        android:textAlignment="center"
                         android:textSize="12sp" />
                 </LinearLayout>
 
@@ -68,8 +72,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:fontFamily="@font/nanumsquareotfbold"
                     android:gravity="center"
                     android:text="나는 나로 살기로 했다."
+                    android:textAlignment="center"
                     android:textSize="14sp" />
             </LinearLayout>
         </LinearLayout>
@@ -82,5 +88,6 @@
         android:gravity="center"
         android:paddingTop="5dp"
         android:text="1/10"
+        android:textAlignment="center"
         android:textSize="12sp" />
 </LinearLayout>
