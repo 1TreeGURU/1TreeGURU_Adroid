@@ -42,6 +42,7 @@ class SearchBookApi : AppCompatActivity() {
             val mViewItems = ArrayList<SearchBookItem>()
             adapter.setItems(mViewItems) //리사이클러뷰 초기화
 
+            //Api에서 정보얻기
             getSearchBookListFromApi(searchMyBookTitle)
         }
 
@@ -70,6 +71,8 @@ class SearchBookApi : AppCompatActivity() {
 
     }
 
+
+    //API에서 정보 얻는 함수
     private fun getSearchBookListFromApi(searchMyBookTitle: String) {
         progressBar2.visibility = View.VISIBLE
         val request = getRequestUrl(searchMyBookTitle)

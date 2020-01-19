@@ -27,7 +27,7 @@ class ReviewDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_review_detail)
 
-        //카테고리 스피너 설정
+        //공유 시 카테고리 스피너 설정
         spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent:AdapterView<*>, view:View,
                                         position:Int, id:Long) {

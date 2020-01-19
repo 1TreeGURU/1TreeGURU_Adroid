@@ -161,7 +161,7 @@ class MyBookListActivity : AppCompatActivity() {
                     val deleteTitle = data.getStringExtra(DELETE_BOOK_TITLE)
                     database.execSQL("delete from MybookTable where title = '" + deleteTitle + "'")
                     Toast.makeText(this,"삭제가 완료되었습니다", Toast.LENGTH_LONG).show()
-                    //데이터 삭제 후 현재 액티비티 갱신
+                    //DB에서 데이터 삭제 후 현재 액티비티 갱신
                     val intent = intent
                     finish()
                     startActivity(intent)
