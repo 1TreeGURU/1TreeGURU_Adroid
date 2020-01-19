@@ -1,3 +1,4 @@
 package com.example.guru2
 
-data class Page(val title:String, val date:String, val num:String, val photo:String)
+data class Diary(val photo: String? = null, val title: String? = null, val author: String? = null,
+                 val date: String? = null, val content: String? = null, val num: String? = null)

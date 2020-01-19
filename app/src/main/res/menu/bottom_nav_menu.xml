@@ -3,23 +3,23 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@drawable/ic_launcher_foreground"
         android:title="Home"
         android:visible="true"/>
     <item
         android:id="@+id/navigation_search"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@drawable/ic_launcher_foreground"
         android:title="Search"
         android:visible="true" />
 
     <item
         android:id="@+id/navigation_bookKit"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@drawable/ic_launcher_foreground"
         android:title="Book Kit"
         android:visible="true" />
     <item
         android:id="@+id/navigation_myPage"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@drawable/ic_launcher_foreground"
         android:title="My Page"
         android:visible="true" />
 

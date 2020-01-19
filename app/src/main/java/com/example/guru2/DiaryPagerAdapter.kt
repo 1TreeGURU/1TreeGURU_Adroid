@@ -1,16 +1,20 @@
 package com.example.guru2
 
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
+import androidx.fragment.app.FragmentManager
 import androidx.viewpager.widget.PagerAdapter
 import kotlinx.android.synthetic.main.page_item.view.*
 
-class DiaryPagerAdapter(val context: Context, val pages: ArrayList<Page>): PagerAdapter(){
+class DiaryPagerAdapter(val context: Context, val pages: ArrayList<Diary>): PagerAdapter() {
 
     override fun getCount(): Int = pages.size
 
@@ -23,6 +27,7 @@ class DiaryPagerAdapter(val context: Context, val pages: ArrayList<Page>): Pager
     }
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
+
         //데이터를 불러옴(array)
         val excel = pages[position]
         //카드 아이템 레이아웃을 불러옴
@@ -41,7 +46,21 @@ class DiaryPagerAdapter(val context: Context, val pages: ArrayList<Page>): Pager
         numOfAllTextView.text = excel.num + "/" + pages.size
 
         imageView.setImageResource(R.drawable.ic_launcher_background)
+
+        view.setOnClickListener {
+           //내용 보여주기
+            val reviewIntent = Intent(context, ReviewDetailActivity::class.java)
+            reviewIntent.putExtra(ReviewDetailActivity.REVIEW_PHOTO, excel.photo)
+            reviewIntent.putExtra(ReviewDetailActivity.REVIEW_TITLE, excel.title)
+            reviewIntent.putExtra(ReviewDetailActivity.REVIEW_AUTHOR, excel.author)
+            reviewIntent.putExtra(ReviewDetailActivity.REVIEW_DATE, excel.date)
+            reviewIntent.putExtra(ReviewDetailActivity.REVIEW_CONTENT, excel.content)
+            context.startActivity(reviewIntent)
+        }
+
         container.addView(view)
         return view
     }
+
+
 }

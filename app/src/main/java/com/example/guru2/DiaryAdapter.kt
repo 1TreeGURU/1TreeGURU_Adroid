@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.page_item.view.*
 import java.util.ArrayList
 
-class  DiaryAdapter(val context: Context, val itemCheck: (Page)-> Unit)
+class  DiaryAdapter(val context: Context, val itemCheck: (Diary)-> Unit)
     : RecyclerView.Adapter<DiaryAdapter.ViewHolder>(){
 
-    private var items = ArrayList<Page>()
+    private var items = ArrayList<Diary>()
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(viewGroup.context)
@@ -20,7 +20,7 @@ class  DiaryAdapter(val context: Context, val itemCheck: (Page)-> Unit)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        val item: Page = items[position]
+        val item: Diary = items[position]
         viewHolder.setItem(item)
     }
 
@@ -28,13 +28,17 @@ class  DiaryAdapter(val context: Context, val itemCheck: (Page)-> Unit)
         return items.count()
     }
 
-    fun setItems(items: ArrayList<Page>) {
+    fun setItems(items: ArrayList<Diary>) {
         this.items = items
     }
 
-    inner class ViewHolder(itemView: View, itemCheck: (Page) -> Unit)
+    fun addItem(item: Diary){
+        items.add(item)
+    }
+
+    inner class ViewHolder(itemView: View, itemCheck: (Diary) -> Unit)
         :RecyclerView.ViewHolder(itemView){
-        fun setItem(item: Page) {
+        fun setItem(item: Diary) {
             val resourceId = context.resources.getIdentifier(
                 item.photo,
                 "drawable",

@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".ReviewDetailActivity" />
+        <activity android:name=".SearchBookApi" />
+        <activity android:name=".ReviewWriteActivity" />
         <activity android:name=".MyPageFragment" />
-        <activity android:name=".BookKItFragment" />
         <activity android:name=".SearchFragment" />
         <activity android:name=".HomeFragment" />
         <activity android:name=".MainActivity">
