@@ -15,6 +15,10 @@
         <activity android:name=".MyPageFragment" />
         <activity android:name=".SearchFragment" />
         <activity android:name=".HomeFragment" />
+        <activity android:name=".SignUpActivity"/>
+        <activity android:name=".FirstActivity"
+            android:exported="true"/>
+        <activity android:name=".LoginActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
