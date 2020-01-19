@@ -7,47 +7,29 @@
     android:orientation="vertical">
 
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="100dp"
-        android:fontFamily="@font/nanumsquareptfregular"
-        android:lineSpacingExtra="17.5sp"
-        android:text="오늘 어떤 하루를 보내셨나요?"
-        android:textColor="#707070"
-        android:textSize="20sp"
+    <View
+        android:id="@+id/view"
+        android:layout_width="3dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="65dp"
+        android:background="#757E88"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="64dp"
         android:fontFamily="@font/nanumsquareptfregular"
-        android:lineSpacingExtra="17.5sp"
-        android:text="책과 함께 기록 해보세요!"
+        android:lineSpacingExtra="3.5sp"
+        android:text="로그인"
         android:textColor="#707070"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="27dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/nanumsquareptfregular"
-        android:lineSpacingExtra="17.5sp"
-        android:text="당신의 하루를"
-        android:textColor="#707070"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@+id/view"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_first_login"
@@ -55,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
         android:layout_marginEnd="52dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="130dp"
         android:background="@drawable/bg_btn_round"
         android:fontFamily="@font/nanumsquareotfbold"
         android:text="로그인"
@@ -71,11 +53,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="80dp"
         android:text="아이디"
         android:textSize="17sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
         android:id="@+id/textv_login_pw"
