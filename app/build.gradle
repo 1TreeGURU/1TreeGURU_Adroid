@@ -9,7 +9,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.example.guru2"
-        minSdkVersion 16
+        minSdkVersion 26
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -46,4 +46,13 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.android.volley:volley:1.1.1'
     implementation 'com.squareup.okhttp3:okhttp:3.12.1'
+
+    //lottie
+    implementation 'com.airbnb.android:lottie:3.3.1'
+
+    // CardView
+    implementation 'com.google.android.material:material:1.0.0'
+
+
+    implementation 'com.android.support:design:25.0.0'
 }
