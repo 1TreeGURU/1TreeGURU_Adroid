@@ -1,11 +1,11 @@
 package com.example.guru2
 
 import android.app.Activity
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_review_detail.*
 
@@ -28,7 +28,7 @@ class ReviewDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_review_detail)
 
         //카테고리 스피너 설정
-        spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+        sp_detail_category.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent:AdapterView<*>, view:View,
                                         position:Int, id:Long) {
                 when(position) {

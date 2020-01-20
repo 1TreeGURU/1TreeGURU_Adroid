@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
@@ -25,15 +24,14 @@
 
         <Button
             android:id="@+id/btn_submit"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/btn_write_submit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-
             android:id="@+id/tv_write_pagetitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -78,22 +76,36 @@
                         android:textColor="@color/gray2"
                         android:textSize="17dp" />
 
-                    <androidx.appcompat.widget.SearchView
+                    <EditText
                         android:id="@+id/editBookTitle"
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:textSize="17dp" />
 
                     <Button
                         android:id="@+id/btn_toSearchBookAct"
-                        android:layout_width="70dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/bg_btn_round"
-                        android:fontFamily="@font/nanumsquareotfbold"
-                        android:text="검색"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:background="@drawable/btn_tosearchbookact"
                         android:textColor="@color/white" />
+
+<!--                    <androidx.appcompat.widget.SearchView-->
+<!--                        android:id="@+id/editBookTitle"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="30dp"-->
+<!--                        android:layout_marginTop="8dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:textSize="17dp" />-->
+
+<!--                    <Button-->
+<!--                        android:id="@+id/btn_toSearchBookAct"-->
+<!--                        android:layout_width="70dp"-->
+<!--                        android:layout_height="35dp"-->
+<!--                        android:background="@drawable/bg_btn_round"-->
+<!--                        android:fontFamily="@font/nanumsquareotfbold"-->
+<!--                        android:text="검색"-->
+<!--                        android:textColor="@color/white" />-->
 
                 </LinearLayout>
 
@@ -107,9 +119,9 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:fontFamily="@font/nanumsquareptfregular"
-                        android:text="작가 : "
                         android:textColor="@color/gray2"
-                        android:textSize="17dp" />
+                        android:textSize="17dp"
+                        android:text="작가 : " />
 
                     <EditText
                         android:id="@+id/editAuthor"
